@@ -3,9 +3,9 @@ import { build as esbuild } from 'esbuild'
 import { repl } from './plugin'
 import type { BuildOptions } from 'esbuild'
 import { resolveCache } from './fs'
-import { MakkeConfig } from './types'
+import { MakkeConfigResolved } from './types'
 
-const devConfig = (config: MakkeConfig): BuildOptions => {
+const devConfig = (config: MakkeConfigResolved): BuildOptions => {
   return deepmerge(config.esbuild, {
     bundle: true,
     outfile: resolveCache('dev.mjs'),
@@ -16,10 +16,10 @@ const devConfig = (config: MakkeConfig): BuildOptions => {
   })
 }
 
-export const build = async (config: MakkeConfig) => {
+export const build = async (config: MakkeConfigResolved) => {
   return esbuild(config.esbuild)
 }
 
-export const buildDev = async (config: MakkeConfig) => {
+export const buildDev = async (config: MakkeConfigResolved) => {
   return esbuild(devConfig(config))
 }

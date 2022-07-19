@@ -4,7 +4,7 @@ import { build } from 'esbuild'
 import { existsSync, mkdirSync, unlinkSync, writeFileSync } from 'fs'
 import { CONFIG_FILE_NAME } from './constants'
 import { resolveCache, resolveConfig, resolveRoot } from './fs'
-import type { MakkeConfig } from './types'
+import type { MakkeConfig, MakkeConfigResolved } from './types'
 
 const banner = `
   // https://github.com/evanw/esbuild/issues/1921
@@ -40,7 +40,7 @@ const bundleConfig = async (file: string) => {
   return result.outputFiles[0].text
 }
 
-const defaultConfig = (): MakkeConfig => {
+const defaultConfig = (): MakkeConfigResolved => {
   return {
     aliases: [],
     esbuild: {
@@ -51,7 +51,7 @@ const defaultConfig = (): MakkeConfig => {
   }
 }
 
-const readConfig = async (file: string): Promise<MakkeConfig> => {
+const readConfig = async (file: string): Promise<MakkeConfigResolved> => {
   const rawConfig = await bundleConfig(file)
   const tmpFile = resolveCache('makke.config.mjs')
 

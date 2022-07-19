@@ -7,14 +7,14 @@ import { parseArgsStringToArgv } from 'string-argv'
 import { resolveCache, resolveRoot } from './fs'
 import type { Plugin } from 'esbuild'
 import type { Interface } from 'readline'
-import { MakkeConfig } from './types'
+import { MakkeConfigResolved } from './types'
 
 interface ReplOptions {
   baseDir: string
   reader: Interface
 }
 
-const commands = (config: MakkeConfig) => {
+const commands = (config: MakkeConfigResolved) => {
   const defaultCommands = [
     'exit',
   ]
@@ -22,14 +22,14 @@ const commands = (config: MakkeConfig) => {
   return defaultCommands.concat(config.aliases).sort()
 }
 
-const completer = (config: MakkeConfig, line: string) => {
+const completer = (config: MakkeConfigResolved, line: string) => {
   const completions = commands(config)
   const hits = completions.filter(completion => completion.startsWith(line))
 
   return [hits.length ? hits : completions, line]
 }
 
-const defaultOptions = (config: MakkeConfig) => {
+const defaultOptions = (config: MakkeConfigResolved) => {
   return {
     baseDir: resolveRoot(),
     reader: readline.createInterface(process.stdin, process.stdout, (line: string) => {
@@ -38,7 +38,7 @@ const defaultOptions = (config: MakkeConfig) => {
   }
 }
 
-const isAlias = (config: MakkeConfig, command: string): boolean => {
+const isAlias = (config: MakkeConfigResolved, command: string): boolean => {
   return config.aliases.includes(command)
 }
 
@@ -46,7 +46,7 @@ const isExit = (command: string): boolean => {
   return command === 'exit'
 }
 
-const executor = (config: MakkeConfig, command: string, args: string[] = [], options: ReplOptions) => {
+const executor = (config: MakkeConfigResolved, command: string, args: string[] = [], options: ReplOptions) => {
   if (isExit(command)) {
     process.exit()
   }
@@ -75,7 +75,7 @@ const executor = (config: MakkeConfig, command: string, args: string[] = [], opt
   }
 }
 
-const prompt = (config: MakkeConfig, options: ReplOptions) => {
+const prompt = (config: MakkeConfigResolved, options: ReplOptions) => {
   options.reader.question('> ', (answer: string) => {
     const [command, ...args] = parseArgsStringToArgv(answer)
 
@@ -92,7 +92,7 @@ const clear = () => {
   readline.clearScreenDown(process.stdout)
 }
 
-export const repl = (config: MakkeConfig, replConfig: Partial<ReplOptions> = {}): Plugin => {
+export const repl = (config: MakkeConfigResolved, replConfig: Partial<ReplOptions> = {}): Plugin => {
   let buildCount = 0
   let startTime = Date.now()
   const options = {
