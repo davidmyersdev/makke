@@ -40,6 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["deepmerge-ts", "npm:4.2.1"],\
             ["esbuild", "npm:0.14.49"],\
             ["execa", "npm:6.1.0"],\
+            ["makke", "workspace:."],\
             ["rimraf", "npm:3.0.2"],\
             ["string-argv", "npm:0.3.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
@@ -79,6 +80,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["ansi-styles", [\
+        ["npm:6.1.0", {\
+          "packageLocation": "./.yarn/cache/ansi-styles-npm-6.1.0-4f6a594d04-7a7f8528c0.zip/node_modules/ansi-styles/",\
+          "packageDependencies": [\
+            ["ansi-styles", "npm:6.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["balanced-match", [\
         ["npm:1.0.2", {\
           "packageLocation": "./.yarn/cache/balanced-match-npm-1.0.2-a53c126459-9706c088a2.zip/node_modules/balanced-match/",\
@@ -112,7 +122,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["npm:5.0.1", {\
           "packageLocation": "./.yarn/cache/chalk-npm-5.0.1-6afcb94227-7b45300372.zip/node_modules/chalk/",\
           "packageDependencies": [\
-            ["chalk", "npm:5.0.1"]\
+            ["chalk", "npm:5.0.1"],\
+            ["#ansi-styles", [\
+              "ansi-styles",\
+              "npm:6.1.0"\
+            ]],\
+            ["#supports-color", [\
+              "supports-color",\
+              "npm:9.2.2"\
+            ]]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -458,7 +476,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["makke", "workspace:."],\
             ["@types/node", "npm:18.0.6"],\
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:032868647ab7b29b08cf249fee43e5e0dcb93f83fde1d713bd3dbfb79e45b64b89b6a057ceb2e0d967d5d56fa8ca700d8935023b1a4b2387d31852e0849f3de8#npm:3.0.0-rc.12"],\
             ["cac", "npm:6.7.12"],\
@@ -466,6 +483,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["deepmerge-ts", "npm:4.2.1"],\
             ["esbuild", "npm:0.14.49"],\
             ["execa", "npm:6.1.0"],\
+            ["makke", "workspace:."],\
             ["rimraf", "npm:3.0.2"],\
             ["string-argv", "npm:0.3.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
@@ -608,6 +626,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/strip-final-newline-npm-3.0.0-7972cbec8b-23ee263adf.zip/node_modules/strip-final-newline/",\
           "packageDependencies": [\
             ["strip-final-newline", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["supports-color", [\
+        ["npm:9.2.2", {\
+          "packageLocation": "./.yarn/cache/supports-color-npm-9.2.2-d003069e84-976d848774.zip/node_modules/supports-color/",\
+          "packageDependencies": [\
+            ["supports-color", "npm:9.2.2"]\
           ],\
           "linkType": "HARD"\
         }]\
