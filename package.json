@@ -1,0 +1,61 @@
+{
+  "name": "makke",
+  "description": "A module bundler and REPL for your Node CLI tools with full TypeScript support",
+  "version": "0.1.4",
+  "author": "David Myers <david@voracious.dev>",
+  "bugs": {
+    "url": "https://github.com/voraciousdev/cinna/issues"
+  },
+  "funding": "https://github.com/sponsors/voraciousdev",
+  "homepage": "https://github.com/voraciousdev/cinna/tree/main/lib/makke",
+  "keywords": [
+    "cli",
+    "cli-dev",
+    "dev-env",
+    "esbuild",
+    "interactive",
+    "typescript"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voraciousdev/cinna.git"
+  },
+  "bin": "./makke.js",
+  "dependencies": {
+    "cac": "^6.7.12",
+    "chalk": "^5.0.1",
+    "esbuild": "^0.14.49",
+    "execa": "^6.1.0",
+    "string-argv": "^0.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.4",
+    "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.12",
+    "deepmerge-ts": "^4.2.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/makke.js",
+      "types": "./dist/makke.d.ts"
+    }
+  },
+  "module": "./dist/makke.js",
+  "packageManager": "yarn@3.2.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "yarn build && yarn makke dev",
+    "build": "yarn build:config && rimraf ./dist && yarn node ./esbuild.config.js && cp ./src/types.d.ts ./dist/makke.d.ts",
+    "build:config": "cat esbuild.config.ts | esbuild --loader=ts > ./esbuild.config.js",
+    "prepack": "yarn build"
+  },
+  "type": "module",
+  "types": "./dist/makke.d.ts"
+}
