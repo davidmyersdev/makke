@@ -40,7 +40,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["deepmerge-ts", "npm:4.2.1"],\
             ["esbuild", "npm:0.14.49"],\
             ["execa", "npm:6.1.0"],\
-            ["makke", "workspace:."],\
             ["rimraf", "npm:3.0.2"],\
             ["string-argv", "npm:0.3.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
@@ -476,6 +475,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["makke", "workspace:."],\
             ["@types/node", "npm:18.0.6"],\
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:032868647ab7b29b08cf249fee43e5e0dcb93f83fde1d713bd3dbfb79e45b64b89b6a057ceb2e0d967d5d56fa8ca700d8935023b1a4b2387d31852e0849f3de8#npm:3.0.0-rc.12"],\
             ["cac", "npm:6.7.12"],\
@@ -483,7 +483,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["deepmerge-ts", "npm:4.2.1"],\
             ["esbuild", "npm:0.14.49"],\
             ["execa", "npm:6.1.0"],\
-            ["makke", "workspace:."],\
             ["rimraf", "npm:3.0.2"],\
             ["string-argv", "npm:0.3.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\

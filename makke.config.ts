@@ -8,14 +8,30 @@ import { defineConfig } from 'makke'
 // @ts-ignore
 const { dependencies = {} } = JSON.parse(readFileSync('./package.json').toString())
 
+const banner = `
+  // https://github.com/evanw/esbuild/issues/1921
+  import { createRequire as makkeCreateRequire } from "module"
+
+  if (typeof require === "undefined") {
+    var require = makkeCreateRequire(import.meta.url)
+  }
+`
+
 export default defineConfig({
   esbuild: {
-    entryPoints: ['./example.ts'],
+    banner: {
+      js: banner,
+    },
+    bundle: true,
+    entryPoints: ['./src/index.ts'],
     external: Object.keys(dependencies),
-    outfile: './example.js',
+    format: 'esm',
+    outfile: './dist/makke.js',
+    platform: 'node',
     plugins: [
       pnpPlugin(),
     ],
+    target: 'node16',
     tsconfig: './tsconfig.json',
   },
 })

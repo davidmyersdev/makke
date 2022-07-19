@@ -1,7 +1,7 @@
 {
   "name": "makke",
   "description": "A module bundler and REPL for your Node CLI tools with full TypeScript support",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "David Myers <david@voracious.dev>",
   "bugs": {
     "url": "https://github.com/voraciousdev/makke/issues"
@@ -51,9 +51,8 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "yarn build && yarn makke dev",
-    "build": "yarn build:config && rimraf ./dist && yarn node ./esbuild.config.js && cp ./src/types.d.ts ./dist/makke.d.ts",
-    "build:config": "cat esbuild.config.ts | esbuild --loader=ts > ./esbuild.config.js",
+    "dev": "yarn makke dev",
+    "build": "yarn makke build && cp ./src/types.d.ts ./dist/makke.d.ts",
     "prepack": "yarn build"
   },
   "type": "module",
