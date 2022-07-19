@@ -4,10 +4,10 @@
   "version": "0.1.4",
   "author": "David Myers <david@voracious.dev>",
   "bugs": {
-    "url": "https://github.com/voraciousdev/cinna/issues"
+    "url": "https://github.com/voraciousdev/makke/issues"
   },
   "funding": "https://github.com/sponsors/voraciousdev",
-  "homepage": "https://github.com/voraciousdev/cinna/tree/main/lib/makke",
+  "homepage": "https://github.com/voraciousdev/makke",
   "keywords": [
     "cli",
     "cli-dev",
@@ -19,7 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/voraciousdev/cinna.git"
+    "url": "git+https://github.com/voraciousdev/makke.git"
   },
   "bin": "./makke.js",
   "dependencies": {
