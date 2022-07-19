@@ -1,7 +1,7 @@
 {
   "name": "makke",
   "description": "A module bundler and REPL for your Node CLI tools with full TypeScript support",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "David Myers <david@voracious.dev>",
   "bugs": {
     "url": "https://github.com/voraciousdev/makke/issues"
